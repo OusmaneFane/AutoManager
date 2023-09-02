@@ -1,0 +1,81 @@
+@layout('layouts.base')
+
+@section('content')
+
+<div class="main-panel">        
+  <div class="content-wrapper">
+    <div class="page-header">
+      <h3 class="page-title">
+          Ajouter un Achat
+      </h3>
+      <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{route('dashboard') }}">Accueil</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Achats</li>
+          </ol>
+      </nav>
+    </div>
+    <form class="forms-sample" action="{{ route('achat.store') }}" method="POST">
+
+    <div class="row">
+      <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+           
+              <div class="form-group">
+                <label for="exampleInputUsername1">Coût de l'achat</label>
+                <input type="text" name="cout" class="form-control" id="exampleInputUsername1" placeholder="Cout d'achat">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">mode de paiement</label>
+                <input type="text" name="mode" class="form-control" id="exampleInputEmail1" placeholder="mode de paiement">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Statut</label>
+                <input type="text" name="statut" class="form-control" id="exampleInputPassword1" placeholder="Statut">
+              </div>
+             
+            
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            
+            <form class="forms-sample">
+              <div class="form-group row">
+                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Fournisseur</label>
+                <div class="col-sm-9">
+                  <input type="text" name="fournisseur" class="form-control" id="exampleInputUsername2" placeholder="Fournisseur">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Date d'achat</label>
+                <div class="col-sm-9">
+                  <input type="date" name="date_achat" class="form-control" id="exampleInputEmail2" placeholder="Date de paiement">
+                </div>
+              </div>
+             
+              <button type="submit" class="btn btn-primary mr-2">Envoyer</button>
+           
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    </form>
+  </div>
+  <!-- content-wrapper ends -->
+  <!-- partial:../../partials/_footer.html -->
+  <footer class="footer">
+    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+      <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a href="https://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
+      <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="far fa-heart text-danger"></i></span>
+    </div>
+  </footer>
+  <!-- partial -->
+</div>
+
+@endsection

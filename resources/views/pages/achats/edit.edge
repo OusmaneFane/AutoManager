@@ -1,0 +1,70 @@
+@layout('layouts.base')
+
+@section('content')
+@!component('components/flash')
+<div class="main-panel">
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h3 class="page-title">
+          Liste des achats
+        </h3>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Accueil</a></li>
+            <li class="breadcrumb-item active" aria-current="page"> Achats</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">liste des achats</h4>
+          <div class="row">
+            <div class="col-12">
+              <div class="table-responsive">
+                <table id="order-listing" class="table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Fournisseur</th>
+                      <th>Cout d'achat</th>
+                      <th>mode d'achat</th>
+                      <th>statut</th>
+                      <th>Action</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @each(ach in achats)
+                    <tr>
+                      <td>{{ ach.id }}</td>
+                      <td>{{ ach.fournisseur }}</td>
+                      <td>{{ ach.cout }} F cfa</td>
+                      <td>{{ ach.mode }}</td>
+                      <td>{{ ach.statut }}</td>
+                      <td>
+                        <a href="{{ route('achat.edit', {id: ach.id}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+                        <a href="{{ route('achat.destroy', {id: ach.id}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+
+                      </td>
+                    </tr>
+                    @endeach
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:../../partials/_footer.html -->
+    <footer class="footer">
+      <div class="d-sm-flex justify-content-center justify-content-sm-between">
+        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a href="https://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
+        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="far fa-heart text-danger"></i></span>
+      </div>
+    </footer>
+    <!-- partial -->
+  </div>
+@endsection

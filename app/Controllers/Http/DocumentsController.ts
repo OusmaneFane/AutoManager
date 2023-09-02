@@ -72,5 +72,21 @@ export default class DocumentsController {
       return response.redirect("back");
     }
   }
+  public async destroy({ params, response, session }: HttpContextContract) {
+    const documentId = params.id;
+    console.log(documentId);
+
+    try {
+      // Récupérer le véhicule par son ID et le supprimer
+      const document = await Document.findOrFail(documentId);
+      await document.delete();
+
+      session.flash('delete', 'Véhicule supprimé avec succès');
+      return response.redirect().toRoute('doc.list');
+    } catch (error) {
+      session.flash('error', 'Impossible de supprimer le véhicule');
+      return response.redirect().back();
+    }
+  }
   
 }

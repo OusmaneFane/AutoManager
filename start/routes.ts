@@ -2,7 +2,8 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-
+import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import Application from '@ioc:Adonis/Core/Application'
 
 Route.get('/', 'LoginController.index').as('login');
 Route.post('/login', 'LoginController.check').as('check');
@@ -49,3 +50,18 @@ Route.get('/documents/:id', 'DocumentsController.show').as('doc.show');
 Route.get('/documents/:id/edit', 'DocumentsController.edit').as('doc.edit');
 Route.post('/documents/:id', 'DocumentsController.update').as('doc.update');
 Route.get('/delete-documents/:id', 'DocumentsController.destroy').as('doc.destroy');
+
+// Enregistrement d'achat
+Route.get('/achats/create', 'AchatsController.create').as('achat.create')
+Route.post('/achats', 'AchatsController.store').as('achat.store')
+
+// Mise à jour d'achat
+Route.get('/achats/:id/edit', 'AchatsController.edit').as('achat.edit')
+Route.get('/achats/:id', 'AchatsController.update').as('achat.update')
+
+// Suppression d'achat
+Route.get('/delete-achats/:id', 'AchatsController.destroy').as('achat.destroy')
+
+// Visualisation d'achat
+Route.get('/achats', 'AchatsController.index').as('achat.list')
+// Route.get('/achats/:id', 'AchatsController.show')

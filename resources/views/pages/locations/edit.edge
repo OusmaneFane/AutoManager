@@ -6,18 +6,18 @@
     <div class="content-wrapper">
       <div class="page-header">
         <h3 class="page-title">
-          Modification Véhicules
+          Liste des Locations
         </h3>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Accueil</a></li>
-            <li class="breadcrumb-item active" aria-current="page"> Modification Véhicules</li>
+            <li class="breadcrumb-item active" aria-current="page"> Locations</li>
           </ol>
         </nav>
       </div>
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Data table</h4>
+          <h4 class="card-title">liste des locations</h4>
           <div class="row">
             <div class="col-12">
               <div class="table-responsive">
@@ -25,28 +25,35 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Numéro d'immatriculation du véhicule</th>
-                      <th>Nom du fichhier</th>
+                      <th>Vehicule</th>
+                      <th>Loueur</th>
+                      <th>Coût mensuel</th>
+                      <th>Durée du bail</th>
+                      <th>Date début</th>
+                      <th>Date fin</th>
                       <th>Action</th>
 
                     </tr>
                   </thead>
                   <tbody>
-                    @each(doc in documents)
+                    @each(loc in locations)
                     <tr>
-                      <td>{{ doc.id }}</td>
+                      <td>{{ loc.id }}</td>
                       <td>
                         @each(veh in vehicules)
-                          @if(veh.id = doc.id)
-                        {{ veh.immatricul }}
-                        @endif
+                          @if(veh.id == loc.vehicule_id)
+                            {{ veh.immatricul }}
+                          @endif
                         @endeach
                       </td>
-                      <td>{{ doc.name }}</td>
-                      
+                      <td>{{ loc.loueur }}</td>
+                      <td>{{ loc.cout_mensuel }}</td>
+                      <td>{{ loc.duree_bail }} F cfa</td>
+                      <td>{{ loc.start_date }}</td>
+                      <td>{{ loc.end_date }}</td>
                       <td>
-                        <a href="{{ route('doc.show', {id: doc.id}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
-                        <a href="{{ route('doc.destroy', {id: doc.id}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                        <a href="{{ route('locations.edit', {id: loc.id}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+                        <a href="{{ route('locations.destroy', {id: loc.id}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
 
                       </td>
                     </tr>

@@ -65,3 +65,10 @@ Route.get('/delete-achats/:id', 'AchatsController.destroy').as('achat.destroy')
 // Visualisation d'achat
 Route.get('/achats', 'AchatsController.index').as('achat.list')
 // Route.get('/achats/:id', 'AchatsController.show')
+
+Route.get('/locations', 'LocationsController.index').as('locations.list')
+Route.get('/locations/create', 'LocationsController.create').as('locations.create')
+Route.post('/locations', 'LocationsController.store').as('locations.store')
+Route.get('/locations/:id/edit', 'LocationsController.edit').as('locations.edit')
+Route.get('/locations/:id', 'LocationsController.update').as('locations.update')
+Route.get('/delete-locations/:id', 'LocationsController.destroy').as('locations.destroy')

@@ -1,0 +1,73 @@
+@layout('layouts.base')
+
+@section('content')
+@!component('components/flash')
+<div class="main-panel">
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h3 class="page-title">
+          Modification Véhicules
+        </h3>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Accueil</a></li>
+            <li class="breadcrumb-item active" aria-current="page"> Modification Véhicules</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Data table</h4>
+          <div class="row">
+            <div class="col-12">
+              <div class="table-responsive">
+                <table id="order-listing" class="table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Numéro d'immatriculation du véhicule</th>
+                      <th>Nom du fichhier</th>
+                      <th>Action</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @each(doc in documents)
+                    <tr>
+                      <td>{{ doc.id }}</td>
+                      <td>
+                        @each(veh in vehicules)
+                          @if(veh.id = doc.id)
+                        {{ veh.immatricul }}
+                        @endif
+                        @endeach
+                      </td>
+                      <td>{{ doc.name }}</td>
+                      
+                      <td>
+                        <a href="{{ route('doc.show', {id: doc.id}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+                        <a href="{{ route('doc.destroy', {id: doc.id}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+
+                      </td>
+                    </tr>
+                    @endeach
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:../../partials/_footer.html -->
+    <footer class="footer">
+      <div class="d-sm-flex justify-content-center justify-content-sm-between">
+        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a href="https://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
+        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="far fa-heart text-danger"></i></span>
+      </div>
+    </footer>
+    <!-- partial -->
+  </div>
+@endsection

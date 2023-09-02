@@ -1,0 +1,82 @@
+@layout('layouts.base')
+
+@section('content')
+<div class="main-panel">
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h3 class="page-title">
+            Modification Documents
+        </h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Accueil</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Modifier Document</li>
+            </ol>
+        </nav>
+      </div>
+      
+      <!--vertical wizard-->
+      <div class="row">
+        <div class="col-12 grid-margin">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">jquery-steps vertical wizard</h4>
+              <form id="example-vertical-wizard" action="{{ route('doc.store') }}" method="POST" enctype="multipart/form-data">
+                <div>
+                  <h3>Véhicules</h3>
+                  <section>
+                    <h4>Véhicules</h4>
+                    <div class="form-group">
+                      <label for="userName">Choisir le Véhicule</label>
+                      
+                        <select class="form-control" name="vehicule_id">
+                          @each(veh in vehicules)
+                            <option selected >{{ veh.immatricul }}</option>
+                            <option value="{{ veh.id }}">{{veh.immatricul}}</option>
+                          @endeach
+                        </select>
+                         
+                    </div>
+                   
+                  </section>
+                  <h3>Document</h3>
+                  <section>
+                    <h4>Document</h4>
+                    <div class="form-group">
+                      <label for="name">Insérer le document</label>
+                      <div class="card">
+                        <div class="card-body">
+                          <h4 class="card-title d-flex">Insérer le document
+                            
+                          </h4>
+                          <input type="file" name="file" class="dropify"  data-default-file="{{ document.path }}" />
+                        </div>
+                      </div>                    
+                    </div>
+
+                  </section>
+                  <h3>Modifer</h3>
+                  <section>
+                    <h4>Modifier</h4>
+                    <div class="form-check text-center">
+                      <button class="btn btn-primary" type="submit">Envoyer</button>
+                    </div>
+                  </section>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:../../partials/_footer.html -->
+    <footer class="footer">
+      <div class="d-sm-flex justify-content-center justify-content-sm-between">
+        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a href="https://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
+        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="far fa-heart text-danger"></i></span>
+      </div>
+    </footer>
+    <!-- partial -->
+  </div>
+@endsection

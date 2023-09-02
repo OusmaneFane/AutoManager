@@ -1,0 +1,88 @@
+@layout('layouts.base')
+
+@section('content')
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="page-header">
+      <h3 class="page-title">
+          Form wizard
+      </h3>
+      <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Forms</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Wizard</li>
+          </ol>
+      </nav>
+    </div>
+    <div class="row">
+      <div class="col-12 grid-margin">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">jquery-steps wizard</h4>
+            <form id="example-form" action="{{ route('storeDriver') }}" method="POST">
+              <div>
+                <h3>Informations du Conducteurs</h3>
+                <section class="scrollable-section" style="max-height: 500px; overflow-y: auto;">
+                  <h4>Conducteur</h4>
+                  <div class="form-group">
+                    <label>Nom</label>
+                    <input type="text" name="fname" class="form-control" aria-describedby="emailHelp" placeholder="Nom">
+                    <small id="emailHelp" class="form-text text-muted"></small>
+                  </div>
+                  <div class="form-group">
+                    <label>Prénom</label>
+                    <input type="text" name="lname" class="form-control" placeholder="Prénom">
+                  </div>
+                  <div class="form-group">
+                    <label>Date de Naissance</label>
+                    <input type="date" name="date_naissance" class="form-control" placeholder="Date de Naissance">
+                  </div>
+                  <div class="form-group">
+                    <label>Numéro de permis</label>
+                    <input type="text" name="permi_number" class="form-control" aria-describedby="emailHelp" placeholder="Nom">
+                    <small id="emailHelp" class="form-text text-muted"></small>
+                  </div>
+                  <div class="form-group">
+                    <label>Date d'obtention du permis</label>
+                    <input type="text" name="date_permi" class="form-control" aria-describedby="emailHelp" placeholder="Nom">
+                    <small id="emailHelp" class="form-text text-muted"></small>
+                  </div>
+                </section>
+                <h3>Vehicules</h3>
+                <section>
+                  <h4>Vehicules</h4>
+                  <div class="form-group">
+                    <label class="col-sm-3 col-form-label">Vehicules</label>
+                    <div class="col-sm-9">
+                      <select class="form-control" name="vehicule_id">
+                        @each(veh in vehicules)
+                          <option>Category1</option>
+                          <option value="{{ veh.id }}">{{veh.immatricul}}</option>
+                        @endeach
+                      </select>
+                    </div>                 
+                   </div>
+                 
+                  <button class="btn btn-primary">Envoyer</button>
+
+                </section>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--vertical wizard-->
+
+  </div>
+  <!-- content-wrapper ends -->
+  <!-- partial:../../partials/_footer.html -->
+  <footer class="footer">
+    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+      <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a href="https://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
+      <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="far fa-heart text-danger"></i></span>
+    </div>
+  </footer>
+  <!-- partial -->
+</div>
+@endsection

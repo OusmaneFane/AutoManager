@@ -1,0 +1,132 @@
+@layout('layouts.base')
+
+@section('content')
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="page-header">
+      <h3 class="page-title">
+          Ajouter véhicule
+      </h3>
+      <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Tableau de bord</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Ajouter Véhicules</li>
+          </ol>
+      </nav>
+    </div>
+    <div class="row">
+      <div class="col-12 grid-margin">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Informations du véhicule</h4>
+            <form id="example-form" action="{{ route('store_veh') }}" method="POST" >
+              <div>
+
+                <section>
+
+                  <div class="form-group">
+                    <label>Numéro d'immatriculation</label>
+                    <input type="text" class="form-control" name="immatricul"  aria-describedby="emailHelp" placeholder="Immatriculation">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  </div>
+                  <div class="form-group">
+                    <label>Marque</label>
+                    <input type="text" name="marque" class="form-control" placeholder="Marque">
+                  </div>
+                  <div class="form-group">
+                    <label>Modèle</label>
+                    <input type="text" name="modele" class="form-control" placeholder="Modèle">
+                  </div>
+                  <div class="form-group">
+                    <label>Année</label>
+                    <input type="text" name="annee" class="form-control" placeholder="l'année">
+                  </div>
+                  <div class="form-group">
+                    <label>kilométrage</label>
+                    <input type="text" name="kilometre" class="form-control" placeholder="Kilométrage">
+                  </div>
+                </section>
+
+
+              </div>
+              <button type="submit" class="btn btn-primary">Ajouter</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--vertical wizard-->
+    {{--  <div class="row">
+      <div class="col-12 grid-margin">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">jquery-steps vertical wizard</h4>
+            <form id="example-vertical-wizard" action="#">
+              <div>
+                <h3>Account</h3>
+                <section>
+                  <h4>Account</h4>
+                  <div class="form-group">
+                    <label for="userName">User name *</label>
+                    <input id="userName" name="userName" type="text" class="required form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password *</label>
+                    <input id="password" name="password" type="password" class="required form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="confirm">Confirm Password *</label>
+                    <input id="confirm" name="confirm" type="password" class="required form-control">
+                    <small>(*) Mandatory</small>
+                  </div>
+                </section>
+                <h3>Profile</h3>
+                <section>
+                  <h4>Profile</h4>
+                  <div class="form-group">
+                    <label for="name">First name *</label>
+                    <input id="name" name="name" type="text" class="required form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="surname">Last name *</label>
+                    <input id="surname" name="surname" type="text" class="required form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input id="email" name="email" type="text" class="required email form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="address">Address</label>
+                    <input id="address" name="address" type="text" class="form-control">
+                    <small>(*) Mandatory</small>
+                  </div>
+                </section>
+                <h3>Finish</h3>
+                <section>
+                  <h4>Finish</h4>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="checkbox" type="checkbox">
+                      I agree with the Terms and Conditions.
+                    </label>
+                  </div>
+                </section>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>  --}}
+  </div>
+  <!-- content-wrapper ends -->
+  <!-- partial:../../partials/_footer.html -->
+  <footer class="footer">
+    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+      <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a href="https://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
+      <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="far fa-heart text-danger"></i></span>
+    </div>
+  </footer>
+  <!-- partial -->
+</div>
+
+@endsection

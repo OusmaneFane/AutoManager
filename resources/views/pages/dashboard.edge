@@ -21,15 +21,15 @@
                     <i class="icon-sm fa fa-user mr-2"></i>
                     Conducteurs
                   </p>
-                  <h2>54000</h2>
+                  <h2>{{ drivers.total }}</h2>
                   <label class="badge badge-outline-success badge-pill"></label>
                 </div>
                 <div class="statistics-item">
                   <p>
-                    <i class="icon-sm fas fa-hourglass-half mr-2"></i>
+                    <i class="icon-sm fa fa-car  mr-2"></i>
                     Véhicules
                   </p>
-                  <h2>123.50</h2>
+                  <h2>{{ vehicules.total }}</h2>
                   <label class="badge badge-outline-danger badge-pill"></label>
                 </div>
                 <div class="statistics-item">
@@ -37,23 +37,23 @@
                     <i class="icon-sm fas fa-file mr-2"></i>
                     Documents
                   </p>
-                  <h2>3500</h2>
+                  <h2>{{ documents.total }}</h2>
                   <label class="badge badge-outline-success badge-pill"></label>
                 </div>
-                <div class="statistics-item">
+                {{--  <div class="statistics-item">
                   <p>
                     <i class="icon-sm fas fa-check-circle mr-2"></i>
                     Update
                   </p>
                   <h2>7500</h2>
                   <label class="badge badge-outline-success badge-pill"></label>
-                </div>
+                </div>  --}}
                 <div class="statistics-item">
                   <p>
                     <i class="icon-sm fas fa-chart-line mr-2"></i>
                     Achat
                   </p>
-                  <h2>9000</h2>
+                  <h2>{{ achats.total }}</h2>
                   <label class="badge badge-outline-success badge-pill"></label>
                 </div>
                 <div class="statistics-item">
@@ -61,7 +61,7 @@
                     <i class="icon-sm fas fa-circle-notch mr-2"></i>
                     Locations
                   </p>
-                  <h2>7500</h2>
+                  <h2>{{ locations.total }}</h2>
                   <label class="badge badge-outline-danger badge-pill"></label>
                 </div>
             </div>
@@ -69,7 +69,7 @@
         </div>
       </div>
     </div>
-   
+
   </div>
   <!-- content-wrapper ends -->
   <!-- partial:partials/_footer.html -->

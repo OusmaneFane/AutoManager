@@ -7,6 +7,7 @@ import Application from '@ioc:Adonis/Core/Application'
 
 Route.get('/', 'LoginController.index').as('login');
 Route.post('/login', 'LoginController.check').as('check');
+Route.get('/logout', 'LoginController.logout').as('logout')
 
 Route.get('/dashboard', 'DashboardController.index').as('dashboard');
 

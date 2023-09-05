@@ -7,19 +7,23 @@ export default class extends BaseSeeder {
 
     await User.createMany([
       {
+        name: 'admin',
         email: 'admin@admin.com',
         password: await Hash.make('admin'),
 
       },
       {
+        name: 'user1',
         email: 'user1@user.com',
         password: await Hash.make('user'),
       },
       {
+        name: 'user2',
         email: 'user2@user.com',
         password: await Hash.make('user'),
       },
       {
+        name: 'user3',
         email: 'user3@user.com',
         password: await Hash.make('user'),
       },

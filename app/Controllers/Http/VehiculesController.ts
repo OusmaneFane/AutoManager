@@ -2,10 +2,14 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Vehicule from 'App/Models/Vehicule'
 export default class VehiculesController {
 
-  public async create({ view }: HttpContextContract) {
+  public async create({ view, auth }: HttpContextContract) {
+    await auth.use('web').authenticate()
+
     return view.render('pages.vehicules.create')
   }
-  public async edit({ view }: HttpContextContract) {
+  public async edit({ view, auth }: HttpContextContract) {
+    await auth.use('web').authenticate()
+
     const vehicules = await Vehicule.all()
     return view.render('pages.vehicules.edit', {vehicules})
   }
@@ -20,7 +24,9 @@ export default class VehiculesController {
       return response.redirect().back()
     }
   }
-  public async editer({ params, view }: HttpContextContract) {
+  public async editer({ params, view, auth }: HttpContextContract) {
+    await auth.use('web').authenticate()
+
     const vehicleId = params.id;
 
     // Récupérer les détails du véhicule par son ID

@@ -3,20 +3,26 @@ import Vehicule from 'App/Models/Vehicule'
 import Document from 'App/Models/Document'
 export default class DocumentsController {
 
-  public async create({ view }: HttpContextContract) {
+  public async create({ view, auth }: HttpContextContract) {
+    await auth.use('web').authenticate()
+
     const vehicules = await Vehicule.all()
     return view.render('pages.documents.create', {vehicules})
   }
-  public async index({ view }: HttpContextContract) {
+  public async index({ view, auth }: HttpContextContract) {
+    await auth.use('web').authenticate()
+
     const vehicules = await Vehicule.all()
     const documents = await Document.all()
     return view.render('pages.documents.edit', {vehicules, documents})
   }
-  public async show({ view, params }: HttpContextContract) {
+  public async show({ view, params, auth }: HttpContextContract) {
+    await auth.use('web').authenticate()
+
     const vehicules = await Vehicule.all()
     const document = await Document.find(params.id);
     console.log(document);
-    
+
     return view.render('pages.documents.editer', {vehicules, document})
   }
 
@@ -24,7 +30,7 @@ export default class DocumentsController {
     const data = request.only(['vehicule_id']);
     const files = request.file('file')
     console.log(files?.size);
-    
+
     if(files){
       const fileName = files.clientName
       const filePath = `/public/uploads/${fileName}`
@@ -38,11 +44,11 @@ export default class DocumentsController {
       await Document.create(document);
       await files.move('./public/uploads', {
         name: fileName,
-  
+
       })
       session.flash('success', 'Véhicule mis à jour avec succès');
       return response.redirect().toRoute('doc.list');
-  
+
     }
     else{
       session.flash('error', 'Véhicule mis à jour avec succès');
@@ -54,16 +60,16 @@ export default class DocumentsController {
   public async update({ params, request, session, response }) {
     try {
       const document = await Document.find(params.id);
-  
+
       if (!document) {
         session.flash({ error: "Document introuvable." });
         return response.redirect("back");
       }
-      
+
       const data = request.only(['vehicule_id']);
       document.merge(data);
       await document.save();
-  
+
       session.flash({ success: "Document mis à jour avec succès !" });
       return response.redirect().toRoute("doc.list");
     } catch (error) {
@@ -88,5 +94,5 @@ export default class DocumentsController {
       return response.redirect().back();
     }
   }
-  
+
 }

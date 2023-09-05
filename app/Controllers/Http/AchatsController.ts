@@ -3,11 +3,15 @@ import Achat from 'App/Models/Achat'
 export default class AchatsController {
 
 // Enregistrement d'achat
-public async create({ view }: HttpContextContract) {
+public async create({ view, auth }: HttpContextContract) {
+  await auth.use('web').authenticate()
+
   return view.render('pages.achats.create')
 }
 
-public async store({ request, response, session }: HttpContextContract) {
+public async store({ request, response, session, auth }: HttpContextContract) {
+  await auth.use('web').authenticate()
+
   const data = request.only(['fournisseur', 'cout', 'date_achat', 'statut', 'mode'])
   const data2 = await Achat.create(data)
   if(data2){
@@ -22,7 +26,9 @@ public async store({ request, response, session }: HttpContextContract) {
 }
 
 // Mise à jour d'achat
-public async edit({ view, params }: HttpContextContract) {
+public async edit({ view, params, auth }: HttpContextContract) {
+  await auth.use('web').authenticate()
+
   const achat = await Achat.findOrFail(params.id)
   return view.render('pages.achats.editer', { achat })
 }
@@ -41,7 +47,7 @@ public async update({ request, response, params, session }: HttpContextContract)
     return response.redirect().back();
 
    }
-  
+
 }
 
 // Suppression d'achat
@@ -63,12 +69,16 @@ public async destroy({ params, response, session }: HttpContextContract) {
 }
 
 // Visualisation d'achat
-public async index({ view }: HttpContextContract) {
+public async index({ view, auth }: HttpContextContract) {
+  await auth.use('web').authenticate()
+
   const achats = await Achat.all()
   return view.render('pages.achats.edit', { achats })
 }
 
-public async show({ params, view }: HttpContextContract) {
+public async show({ params, view, auth }: HttpContextContract) {
+  await auth.use('web').authenticate()
+
   const achat = await Achat.findOrFail(params.id)
   return view.render('achats.show', { achat })
 }

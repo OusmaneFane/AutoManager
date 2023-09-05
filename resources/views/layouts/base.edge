@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="/vendors/iconfonts/font-awesome/css/all.min.css">
   <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="/vendors/css/vendor.bundle.addons.css">
-  <!-- endinject -->  
+  <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
@@ -399,10 +399,10 @@
               </div>
               <div class="profile-name">
                 <p class="name">
-                  admin@admin.com
+                 {{ auth.user.email}}
                 </p>
                 <p class="designation">
-                  admin
+                  {{ auth.user.name }}
                 </p>
               </div>
             </div>
@@ -488,10 +488,10 @@
             </div>
           </li>
           {{--  <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#editors" aria-expanded="false" aria-controls="editors">
+            <a class="nav-link" data-toggle="collapse" href="{{ route('logout') }}"  >
               <i class="fas fa-pen-square menu-icon"></i>
-              <span class="menu-title">Editors</span>
-              <i class="menu-arrow"></i>
+              <span class="menu-title">Déconnexion</span>
+
             </a>
             <div class="collapse" id="editors">
               <ul class="nav flex-column sub-menu">
@@ -499,8 +499,8 @@
                 <li class="nav-item"><a class="nav-link" href="pages/forms/code_editor.html">Code editors</a></li>
               </ul>
             </div>
-          </li>
-          <li class="nav-item">
+          </li>  --}}
+          {{--  <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
               <i class="fas fa-chart-pie menu-icon"></i>
               <span class="menu-title">Charts</span>
@@ -651,19 +651,19 @@
                 <li class="nav-item"> <a class="nav-link" href="pages/samples/orders.html"> Orders </a></li>
               </ul>
             </div>
-          </li>
+          </li>--}}
           <li class="nav-item">
-            <a class="nav-link" href="pages/documentation.html">
-              <i class="far fa-file-alt menu-icon"></i>
-              <span class="menu-title">Documentation</span>
+            <a class="nav-link" href="{{ route('logout') }}">
+              <i class="fa fa-sign-out menu-icon"></i>
+              <span class="menu-title">Déconnexion</span>
             </a>
-          </li>  --}}
+          </li>
         </ul>
       </nav>
       <!-- partial -->
       @!section('content')
       <!-- main-panel ends -->
-      
+
     </div>
     <footer class="footer">
       <div class="d-sm-flex justify-content-center justify-content-sm-between">

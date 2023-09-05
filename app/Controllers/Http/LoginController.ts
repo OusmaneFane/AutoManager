@@ -46,4 +46,8 @@ export default class LoginController {
          // adonis install @adonisjs/auth
 
        }
+       public async logout({ auth, response }: HttpContextContract) {
+        await auth.logout()
+        return response.redirect().toRoute('login')
+      }
 }

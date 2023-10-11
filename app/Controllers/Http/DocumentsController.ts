@@ -27,13 +27,15 @@ export default class DocumentsController {
   }
 
   public  async store({ request, response, session }) {
-    const data = request.only(['vehicule_id']);
+    const data = request.input('vehicule_id');
+    console.log("vehicule_id: ", data);
+
     const files = request.file('file')
     console.log(files?.size);
 
     if(files){
       const fileName = files.clientName
-      const filePath = `/public/uploads/${fileName}`
+      const filePath = `/uploads/${fileName}`
       const document = new Document()
       document.vehicule_id = data
       document.name = files?.clientName as string

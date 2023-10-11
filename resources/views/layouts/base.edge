@@ -487,6 +487,19 @@
               </ul>
             </div>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
+              <i class="fas fa-chart-pie menu-icon"></i>
+              <span class="menu-title">Paiements</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="charts">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{ route('payments.create') }}">Ajouter</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('payments.index') }}">Modifier</a></li>
+              </ul>
+              </div>
+          </li>
           {{--  <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="{{ route('logout') }}"  >
               <i class="fas fa-pen-square menu-icon"></i>

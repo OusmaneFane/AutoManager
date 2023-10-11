@@ -1,0 +1,104 @@
+@layout('layouts.base')
+
+@section('content')
+
+<div class="main-panel">        
+  <div class="content-wrapper">
+    <div class="page-header">
+      <h3 class="page-title">
+          Paiements
+      </h3>
+      <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">accueil</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Enregistrer un paiement</li>
+          </ol>
+      </nav>
+    </div>
+    <div class="row">
+      
+      <div class="col-12 grid-margin">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Enregistrer un paiement</h4>
+            <form action="{{ route('payments.store') }}" method="POST" class="form-sample">
+              <p class="card-description">
+                remplissez le formulaire
+              </p>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Mode de paiement</label>               
+                      <div class="col-sm-4">
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input hidden name="user_id"  type="text" value="{{ auth.user.id }}">
+                            <input type="radio" class="form-check-input" name="payment_method" id="membershipRadios1" value="Espèce">
+                            Espèce
+                          </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="payment_method" id="membershipRadios2" value="Chèque">
+                          Chèque
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Montant (FCFA)</label>
+                    <div class="col-sm-9">
+                      <input type="number" name="amount" class="form-control" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Date de paiement</label>
+                    <div class="col-sm-9">
+                       <input type="date" name="payment_date" class="form-control" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Numéro de facture associé au paiement</label>
+                    <div class="col-sm-9">
+                      <input type="text" name="invoice_number" class="form-control" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Description du paiement</label>
+                    <div class="col-sm-9">
+                      <textarea name="description" class="form-control" cols="30" rows=""></textarea>  
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <button style="margin-left: 400px; margin-top:30px;" class="btn btn-primary" type="submit">ENVOYER</button>
+                  </div>
+                </div>
+              </div>
+             
+            </form>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+  </div>
+  <!-- partial -->
+</div>
+
+@endsection

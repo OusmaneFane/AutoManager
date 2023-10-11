@@ -73,3 +73,8 @@ Route.post('/locations', 'LocationsController.store').as('locations.store')
 Route.get('/locations/:id/edit', 'LocationsController.edit').as('locations.edit')
 Route.get('/locations/:id', 'LocationsController.update').as('locations.update')
 Route.get('/delete-locations/:id', 'LocationsController.destroy').as('locations.destroy')
+
+// payments
+Route.get('/payments', 'PaymentsController.index').as('payments.index')
+Route.get('/payments/create', 'PaymentsController.create').as('payments.create')
+Route.post('/payments', 'PaymentsController.store').as('payments.store')

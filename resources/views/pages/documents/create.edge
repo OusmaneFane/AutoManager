@@ -14,13 +14,13 @@
             </ol>
         </nav>
       </div>
-      
+
       <!--vertical wizard-->
       <div class="row">
         <div class="col-12 grid-margin">
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title">jquery-steps vertical wizard</h4>
+              <h4 class="card-title">Veuillez renseigner les champs </h4>
               <form id="example-vertical-wizard" action="{{ route('doc.store') }}" method="POST" enctype="multipart/form-data">
                 <div>
                   <h3>Véhicules</h3>
@@ -28,16 +28,16 @@
                     <h4>Véhicules</h4>
                     <div class="form-group">
                       <label for="userName">Choisir le Véhicule</label>
-                      
+
                         <select class="form-control" name="vehicule_id">
                           @each(veh in vehicules)
                             <option >Sélectionner le véhicule</option>
                             <option value="{{ veh.id }}">{{veh.immatricul}}</option>
                           @endeach
                         </select>
-                         
+
                     </div>
-                   
+
                   </section>
                   <h3>Document</h3>
                   <section>
@@ -47,11 +47,11 @@
                       <div class="card">
                         <div class="card-body">
                           <h4 class="card-title d-flex">Insérer le document
-                            
+
                           </h4>
                           <input type="file" name="file" class="dropify" />
                         </div>
-                      </div>                    
+                      </div>
                     </div>
 
                   </section>

@@ -1,7 +1,7 @@
 @layout('layouts.base')
 
 @section('content')
-<div class="main-panel">
+  <div class="main-panel">
     <div class="content-wrapper">
       <div class="page-header">
         <h3 class="page-title">
@@ -14,44 +14,48 @@
             </ol>
         </nav>
       </div>
-      
+
       <!--vertical wizard-->
       <div class="row">
         <div class="col-12 grid-margin">
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title">Modification du document {{  }}</h4>
-              <form id="example-vertical-wizard" action="{{ route('doc.store') }}" method="POST" enctype="multipart/form-data">
+              <h4 class="card-title">Modification du document </h4>
+              <form id="example-vertical-wizard" action="{{ route('doc.update', {id: document.id}) }}" method="POST" enctype="multipart/form-data">
                 <div>
                   <h3>Véhicules</h3>
                   <section>
                     <h4>Véhicules</h4>
                     <div class="form-group">
                       <label for="userName">Choisir le Véhicule</label>
-                      
+
                         <select class="form-control" name="vehicule_id">
                           @each(veh in vehicules)
                             <option selected >{{ veh.immatricul }}</option>
                             <option value="{{ veh.id }}">{{veh.immatricul}}</option>
                           @endeach
                         </select>
-                         
+
                     </div>
-                   
+
                   </section>
                   <h3>Document</h3>
                   <section>
                     <h4>Document</h4>
                     <div class="form-group">
-                      <label for="name">Insérer le document</label>
+                      <label for="name">Modifier le document</label>
                       <div class="card">
                         <div class="card-body">
-                          <h4 class="card-title d-flex">Insérer le document
-                            
+                          <h4 class="card-title d-flex">Modifier le document
+
                           </h4>
-                          <input type="file" name="file" class="dropify"  data-default-file="{{ document.path }}" />
+                          {{--  <input type="file" name="file" class="dropify"  data-default-file="{{ document.path }}" />  --}}
+                          <div class="form-group">
+                            <img style="width: 40%;height: 50%;" src="{{ document.path }}" alt="">
+                            <input type="file" name="file" class="dropify"  data-default-file="{{ document.path }}" />
+                          </div>
                         </div>
-                      </div>                    
+                      </div>
                     </div>
 
                   </section>

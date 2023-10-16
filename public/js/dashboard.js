@@ -142,27 +142,27 @@
         type: 'pie',
         data: {
           datasets: [{
-            data: [75, 25, 15, 10],
+            data: [75, 25, ],
             backgroundColor: [
-              '#392c70',
+              // '#392c70',
               '#04b76b',
               '#ff5e6d',
               '#eeeeee'
             ],
             borderColor: [
-              '#392c70',
+              // '#392c70',
               '#04b76b',
               '#ff5e6d',
-              '#eeeeee'
+            
             ],
           }],
       
           // These labels appear in the legend and in the tooltips when hovering different arcs
           labels: [
-            'Active users',
-            'Subscribers',
-            'New visitors',
-            'Others'
+            // 'Active users',
+            'En entier',
+            'Achats en attente',
+            
           ]
         },
         options: {

@@ -78,3 +78,16 @@ Route.get('/delete-locations/:id', 'LocationsController.destroy').as('locations.
 Route.get('/payments', 'PaymentsController.index').as('payments.index')
 Route.get('/payments/create', 'PaymentsController.create').as('payments.create')
 Route.post('/payments', 'PaymentsController.store').as('payments.store')
+
+//register
+// Route
+Route.get('/register', 'LoginController.showRegisterForm').as('register')
+Route.post('/register', 'LoginController.register').as('register.create') 
+
+// rapport
+// start/routes.js
+
+Route.get('/reports/cost', 'RapportsController.cost').as('rapport.achat')
+
+Route.get('/reports', 'RapportsController.cost').as('rapport.usage')
+

@@ -46,8 +46,49 @@ export default class LoginController {
          // adonis install @adonisjs/auth
 
        }
+       public async showRegisterForm({ view }) {
+        return view.render('register.index')
+      }
+      public async register({ request, response, session }) {
+        const userData = request.only(['name', 'email']);
+        const { password, confirm_password } = request.all();
+        console.log(userData);
+        console.log(password, confirm_password);
+        
+        
+        try {
+          
+          if (password !== confirm_password) {
+            response.flash({ error: 'Les mots de passe ne correspondent pas' });
+            return response.redirect().back(); // Redirige vers le formulaire d'inscription en cas d'erreur
+          }else{
+            
+            // Hachez le mot de passe
+            const hashedPassword = await Hash.make(password);
+
+            // Créez un nouvel utilisateur avec le mot de passe haché
+            const user = new User();
+            user.name = userData.name;
+            user.email = userData.email;
+            user.password = hashedPassword;
+
+            await user.save();
+            session.flash({register: 'compte créer avec succès'})
+            return response.redirect().toRoute('login'); // Redirige vers la page d'accueil après l'inscription
+
+          }
+
+
+        } catch (error) {
+          // Gérer les erreurs d'inscription, par exemple, si l'email est déjà pris
+          session.flash({ error: 'Erreur lors de l\'inscription' });
+          return response.redirect().back(); // Redirige vers le formulaire d'inscription en cas d'erreur
+        }
+
+      }
        public async logout({ auth, response }: HttpContextContract) {
         await auth.logout()
         return response.redirect().toRoute('login')
       }
+
 }

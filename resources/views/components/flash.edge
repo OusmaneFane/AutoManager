@@ -1,21 +1,21 @@
 @if(flashMessages.has('success'))
-    <div class="alert alert-success">
-        <script>
-            Swal.fire({
+<div class="alert alert-success">
+  <script>
+    Swal.fire({
               position: 'top-end',
               icon: 'success',
               title: 'Opération effectué avec succès',
               showConfirmButton: false,
               timer: 1500
           })
-        </script>
-    </div>
+  </script>
+</div>
 @endif
 
 @if(flashMessages.has('error'))
 <div class="alert alert-error">
   <script>
-      Swal.fire({
+    Swal.fire({
         position: 'top-end',
         icon: 'error',
         title: 'Une erreur s\'est produite',
@@ -25,10 +25,23 @@
   </script>
 </div>
 @endif
+@if(flashMessages.has('incorrect'))
+<div class="alert alert-error">
+  <script>
+    Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Indentifiant(s) incorrects',
+        showConfirmButton: false,
+        timer: 1500
+    })
+  </script>
+</div>
+@endif
 @if(flashMessages.has('notification'))
 <div class="alert alert-success">
   <script>
-      Swal.fire({
+    Swal.fire({
         position: 'top-end',
         icon: 'error',
         title: 'Données mis à jour',
@@ -40,16 +53,15 @@
 @endif
 
 @if(flashMessages.has('delete'))
-    <div class="alert alert-success">
-        <script>
-            Swal.fire({
+<div class="alert alert-success">
+  <script>
+    Swal.fire({
               position: 'top-end',
               icon: 'success',
               title: 'Opération Supprimée avec succès',
               showConfirmButton: false,
               timer: 1500
           })
-        </script>
-    </div>
+  </script>
+</div>
 @endif
-
